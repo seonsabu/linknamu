@@ -3,47 +3,53 @@
 @tailwind utilities;
 
 :root {
-  --accent: #0ea5e9;
-  --accent-light: #e0f2fe;
-  --accent-dark: #0284c7;
-  --text-main: #1f2937;
-  --text-sub: #4b5563;
-  --text-faint: #9ca3af;
-  --bg-grad-1: #f0f9ff;
-  --bg-grad-2: #e0f2fe;
-  --bg-grad-3: #f8fbff;
-  --card-bg: #ffffff;
-  --border: rgba(14, 165, 233, 0.14);
-  --link-bg: #f8fafc;
-  --link-border: #e2e8f0;
-  --link-hover-bg: #f0f9ff;
-  --toggle-bg: #f1f5f9;
-  --toggle-border: #e2e8f0;
-  --badge-bg: rgba(15, 23, 42, 0.06);
-  --badge-text: #64748b;
-  --shadow-soft: 0 1px 2px rgba(15, 23, 42, 0.04), 0 20px 40px -16px rgba(14, 165, 233, 0.18);
+  --accent: #ea7c4f;
+  --accent-light: rgba(234, 124, 79, 0.14);
+  --accent-dark: #c85f37;
+  --text-main: #3a2e26;
+  --text-sub: #7d6d5f;
+  --text-faint: #b3a294;
+  --bg-grad-1: #fff9f2;
+  --bg-grad-2: #ffe4cc;
+  --bg-grad-3: #fff1e3;
+  --bg-glow-1: rgba(255, 191, 133, 0.55);
+  --bg-glow-2: rgba(255, 214, 179, 0.45);
+  --card-bg: rgba(255, 255, 255, 0.4);
+  --border: rgba(255, 255, 255, 0.55);
+  --avatar-ring: rgba(255, 255, 255, 0.75);
+  --link-bg: rgba(255, 255, 255, 0.55);
+  --link-border: rgba(255, 255, 255, 0.65);
+  --link-hover-bg: rgba(255, 255, 255, 0.78);
+  --toggle-bg: rgba(255, 255, 255, 0.5);
+  --toggle-border: rgba(255, 255, 255, 0.6);
+  --badge-bg: rgba(58, 46, 38, 0.06);
+  --badge-text: #8c7a6b;
+  --shadow-soft: 0 10px 30px -14px rgba(200, 95, 55, 0.28);
 }
 
 :root[data-theme="dark"] {
-  --accent: #38bdf8;
-  --accent-light: rgba(56, 189, 248, 0.14);
-  --accent-dark: #7dd3fc;
-  --text-main: #f1f5f9;
-  --text-sub: #cbd5e1;
-  --text-faint: #64748b;
-  --bg-grad-1: #0b1120;
-  --bg-grad-2: #0f172a;
-  --bg-grad-3: #0b1120;
-  --card-bg: #111827;
-  --border: rgba(56, 189, 248, 0.16);
-  --link-bg: #1a2333;
-  --link-border: #263048;
-  --link-hover-bg: #1e293b;
-  --toggle-bg: #1a2333;
-  --toggle-border: #263048;
-  --badge-bg: rgba(148, 163, 184, 0.12);
-  --badge-text: #94a3b8;
-  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.3), 0 20px 40px -16px rgba(0, 0, 0, 0.5);
+  --accent: #fb9a68;
+  --accent-light: rgba(251, 154, 104, 0.16);
+  --accent-dark: #ffb385;
+  --text-main: #f4ece3;
+  --text-sub: #cab9aa;
+  --text-faint: #8c7a6c;
+  --bg-grad-1: #1b1512;
+  --bg-grad-2: #241a14;
+  --bg-grad-3: #170f0c;
+  --bg-glow-1: rgba(217, 119, 6, 0.14);
+  --bg-glow-2: rgba(180, 83, 9, 0.12);
+  --card-bg: rgba(255, 255, 255, 0.045);
+  --border: rgba(255, 255, 255, 0.09);
+  --avatar-ring: rgba(255, 255, 255, 0.1);
+  --link-bg: rgba(255, 255, 255, 0.07);
+  --link-border: rgba(255, 255, 255, 0.11);
+  --link-hover-bg: rgba(255, 255, 255, 0.11);
+  --toggle-bg: rgba(255, 255, 255, 0.06);
+  --toggle-border: rgba(255, 255, 255, 0.1);
+  --badge-bg: rgba(255, 255, 255, 0.07);
+  --badge-text: #c2b1a2;
+  --shadow-soft: 0 10px 30px -14px rgba(0, 0, 0, 0.55);
 }
 
 * {
@@ -62,10 +68,15 @@ body {
   align-items: center;
   justify-content: center;
   padding: 24px;
-  font-family: var(--font-inter), var(--font-noto-kr), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Pretendard Variable", Pretendard, var(--font-inter), var(--font-noto-kr),
+    -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
   color: var(--text-main);
-  background: linear-gradient(160deg, var(--bg-grad-1) 0%, var(--bg-grad-2) 45%, var(--bg-grad-3) 100%);
+  background: radial-gradient(circle at 12% -8%, var(--bg-glow-1), transparent 55%),
+    radial-gradient(circle at 92% 108%, var(--bg-glow-2), transparent 50%),
+    linear-gradient(160deg, var(--bg-grad-1) 0%, var(--bg-grad-2) 45%, var(--bg-grad-3) 100%);
   background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   transition: background 0.25s ease, color 0.25s ease;
 }
 
@@ -78,17 +89,18 @@ body {
   border-radius: 50%;
   background: var(--toggle-bg);
   border: 1px solid var(--toggle-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   color: var(--text-sub);
   z-index: 10;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .theme-toggle:hover {
-  border-color: var(--accent);
   color: var(--accent-dark);
   transform: translateY(-1px);
 }
@@ -116,64 +128,71 @@ body {
   max-width: 420px;
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 48px 32px 40px;
+  border-radius: 28px;
+  padding: 52px 32px 40px;
   box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: background 0.25s ease, border-color 0.25s ease;
 }
 
 .avatar-wrap {
   position: relative;
   display: inline-flex;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
 }
 
 .avatar {
-  width: 84px;
-  height: 84px;
+  width: 104px;
+  height: 104px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #38bdf8, #0284c7);
+  background: linear-gradient(135deg, #ffb27a, #ea7c4f);
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 700;
   letter-spacing: -0.5px;
-  box-shadow: 0 8px 20px -6px rgba(2, 132, 199, 0.55);
+  border: 4px solid var(--avatar-ring);
+  box-shadow: 0 16px 32px -12px rgba(200, 95, 55, 0.45), 0 2px 6px rgba(58, 46, 38, 0.12),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5);
   overflow: hidden;
-  border: none;
   padding: 0;
   cursor: pointer;
   font-family: inherit;
-  transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 .avatar:hover {
-  opacity: 0.88;
+  opacity: 0.92;
+  transform: translateY(-1px);
 }
 
 .avatar-edit-badge {
   position: absolute;
-  right: -2px;
-  bottom: -2px;
-  width: 26px;
-  height: 26px;
+  right: 0;
+  bottom: 0;
+  width: 27px;
+  height: 27px;
   border-radius: 50%;
-  background: var(--card-bg);
-  border: 2px solid var(--card-bg);
+  background: #ffffff;
+  border: 2px solid var(--bg-grad-1);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--accent-dark);
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.18);
+  box-shadow: 0 2px 6px rgba(58, 46, 38, 0.2);
   pointer-events: none;
+}
+
+:root[data-theme="dark"] .avatar-edit-badge {
+  background: #241a14;
 }
 
 .avatar-edit-badge svg {
@@ -187,18 +206,18 @@ body {
 }
 
 .name {
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 800;
   color: var(--text-main);
-  margin: 0 0 6px;
+  margin: 0 0 8px;
   letter-spacing: -0.3px;
 }
 
 .intro {
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--text-sub);
-  margin: 0 0 28px;
+  margin: 0 0 36px;
   max-width: 300px;
 }
 
@@ -206,8 +225,8 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: 14px;
+  margin-bottom: 28px;
 }
 
 .link-card {
@@ -215,28 +234,31 @@ body {
   align-items: center;
   gap: 12px;
   width: 100%;
-  padding: 14px 16px;
-  border-radius: 14px;
+  padding: 16px 18px;
+  border-radius: 18px;
   background: var(--link-bg);
   border: 1px solid var(--link-border);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  box-shadow: 0 6px 18px -12px rgba(58, 46, 38, 0.18);
   text-decoration: none;
   color: var(--text-main);
   font-weight: 600;
   font-size: 14.5px;
-  transition: all 0.15s ease;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;
 }
 
 .link-card:hover {
   background: var(--link-hover-bg);
-  border-color: var(--accent);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px -12px rgba(58, 46, 38, 0.24);
 }
 
 .link-icon {
   width: 36px;
   height: 36px;
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--accent-light);
   color: var(--accent-dark);
   display: flex;
@@ -270,10 +292,11 @@ body {
 .footer-note {
   font-size: 11.5px;
   color: var(--text-faint);
+  letter-spacing: 0.1px;
 }
 
 @media (max-width: 420px) {
   .card {
-    padding: 40px 22px 32px;
+    padding: 44px 20px 28px;
   }
 }

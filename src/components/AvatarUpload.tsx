@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 
 const STORAGE_AVATAR = "linknamu_avatar";
+const DEFAULT_AVATAR = "/profile.png";
 
 export default function AvatarUpload() {
-  const [avatar, setAvatar] = useState<string | null>(null);
+  const [avatar, setAvatar] = useState<string | null>(DEFAULT_AVATAR);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
