@@ -10,8 +10,6 @@ import {
   EmailIcon,
 } from "./icons";
 
-const STORAGE_CLICKS = "linknamu_clicks";
-
 const iconMap: Record<string, ComponentType> = {
   instagram: InstagramIcon,
   youtube: YoutubeIcon,
@@ -24,19 +22,15 @@ export default function LinkList() {
   const [clicks, setClicks] = useState<Record<string, number>>({});
 
   useEffect(() => {
-    try {
-      setClicks(JSON.parse(localStorage.getItem(STORAGE_CLICKS) || "{}"));
-    } catch {
-      setClicks({});
-    }
+    fetch("/api/clicks")
+      .then((res) => res.json())
+      .then((data) => setClicks(data))
+      .catch(() => setClicks({}));
   }, []);
 
   function handleClick(id: string) {
-    setClicks((prev) => {
-      const next = { ...prev, [id]: (prev[id] || 0) + 1 };
-      localStorage.setItem(STORAGE_CLICKS, JSON.stringify(next));
-      return next;
-    });
+    setClicks((prev) => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
+    fetch(`/api/clicks/${id}`, { method: "POST" }).catch(() => {});
   }
 
   return (
